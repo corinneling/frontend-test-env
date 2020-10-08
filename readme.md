@@ -1,4 +1,4 @@
-# How to set up frontend testing env for a JS project with Jest & @testing-library
+# How to set up a test env that can work with user events for a JS project using Jest and @testing-library
 
 1. Install dev dependencies with `npm i --save-dev`
    * [`@testing-library/dom`](https://www.npmjs.com/package/@testing-library/dom)
