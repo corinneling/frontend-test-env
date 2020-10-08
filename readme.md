@@ -1,4 +1,5 @@
-# How to set up a test env that can work with user events for a JS project using Jest and @testing-library
+# How to set up a test env that can work with user events for a JS project
+I decided to create this repo because it took me a little while to figure out how to set up this specific kind of testing environment and hope this helps someone else with their project! This is specifically set up using Jest and @testing-library. If you would like to see this working, clone this repo, run `npm i`, and then run `npm run test`
 
 1. Install dev dependencies with `npm i --save-dev`
    * [`@testing-library/dom`](https://www.npmjs.com/package/@testing-library/dom)
@@ -44,7 +45,7 @@
       * we only need to import this package once in our project
    * setup a function for creating a fake DOM to test with. This function(s) will be imported into our individual test files. It could look something like this:
       ```js
-      export function exampleDOM() {
+      export function getCarouselDOM() {
         return document.body.innerHTML = `
           <div id="whirli-carousel">
             <div data-testid="slide-one" aria-hidden="false">
@@ -64,23 +65,23 @@
      ```js
      import userEvent from '@testing-library/user-event';
      import { screen } from '@testing-library/dom';
-     import { exampleDOM } from './spec-helper';
+     import { getCarouselDOM } from './spec-helper';
      // this is the function i'll be testing
      import { handleButtonNavigation } from '../navigation';
      ```
 
   6. Write a test! here's an example from another project
-  ```js
-  describe('Carousel Navigation', () => {
-    test('updates aria-hidden of next slide to false when next button is clicked', () => {
-      // Creates the fake DOM
-      getCarouselDOM();
-      // the function im testing which adds event listeners to buttons
-      handleButtonNavigation();
-      // simulates a user clicking on the button with the text "Next Slide"
-      userEvent.click(screen.getByText('Next Slide'))
-      expect(screen.getByTestId('slide-one')).toHaveAttribute('aria-hidden', 'true');
-      expect(screen.getByTestId('slide-two')).toHaveAttribute('aria-hidden', 'false');
-    })
-  })
-  ```
+     ```js
+     describe('Carousel Navigation', () => {
+       test('updates aria-hidden of next slide to false when next button is clicked', () => {
+         // Creates the fake DOM
+         getCarouselDOM();
+         // the function im testing which adds event listeners to buttons
+         handleButtonNavigation();
+         // simulates a user clicking on the button with the text "Next Slide"
+         userEvent.click(screen.getByText('Next Slide'))
+         expect(screen.getByTestId('slide-one')).toHaveAttribute('aria-hidden', 'true');
+         expect(screen.getByTestId('slide-two')).toHaveAttribute('aria-hidden', 'false');
+       })
+     })
+     ```
