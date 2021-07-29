@@ -26,6 +26,7 @@ I decided to create this repo because it took me a little while to figure out ho
         '^.+\\.js$': 'babel-jest',
       },
       verbose: true,
+      testEnvironment: 'jsdom'
     };
    ```
 
