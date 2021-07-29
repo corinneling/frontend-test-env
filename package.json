@@ -11,7 +11,7 @@
   "devDependencies": {
     "@babel/preset-env": "^7.14.8",
     "@testing-library/dom": "^8.1.0",
-    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/user-event": "^12.1.7",
     "babel-jest": "^26.5.2",
     "jest": "^26.5.2"
