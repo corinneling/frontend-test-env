@@ -2,7 +2,7 @@ import userEvent from '@testing-library/user-event';
 import { screen } from '@testing-library/dom';
 import { getExampleDOM } from './spec-helper';
 // this is the function i'll be testing
-import { buttonHandler } from './index';
+import { buttonHandler } from '../src/index';
 
 describe('Carousel Navigation', () => {
   test('updates aria-hidden of next slide to false when next button is clicked', () => {
