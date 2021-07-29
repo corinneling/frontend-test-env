@@ -11,4 +11,5 @@ module.exports = {
     '^.+\\.js$': 'babel-jest',
   },
   verbose: true,
+  testEnvironment: 'jsdom'
 };
